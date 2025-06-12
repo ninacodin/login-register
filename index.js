@@ -15,6 +15,7 @@ const indexController = require('./controllers/indexController')
 const loginController = require('./controllers/loginController')
 const registerController = require('./controllers/registerController')
 const storeUserController = require('./controllers/storeUserController')
+const loginUserController = require('./controllers/loginUserController')
 
 app.use(express.static('public'))
 app.use(express.json())
@@ -29,6 +30,7 @@ app.get('/', indexController)
 app.get('/login', loginController)
 app.get('/register', registerController)
 app.post('/user/register', storeUserController)
+app.post('/user/login', loginUserController)
 
 app.listen(3000, () => {
     console.log("App listening on port 3000")
