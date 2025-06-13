@@ -191,8 +191,16 @@
                             <title>Search</title>
                             <circle cx="10.5" cy="10.5" r="7.5"></circle>
                             <path d="M21 21l-5.2-5.2"></path>
-                        </svg> </a> <a class="btn btn-sm btn-outline-secondary mx-3" href="/login">Sign In</a>
-                        </svg> </a> <a class="btn btn-sm btn-success" href="/register">Sign Up</a> </div>
+                        </svg> </a>
+                        <% if (loggedIn) { %>
+                        <a class="btn btn-sm btn-danger" href="/logout">Logout</a>
+                        <% } %>
+                        
+                        <% if (!loggedIn) { %>
+                        <a class="btn btn-sm btn-outline-secondary mx-3" href="/login">Sign In</a>
+                        <a class="btn btn-sm btn-success" href="/register">Sign Up</a>
+                        <% } %>
+                </div>
             </div>
         </header>
         <div class="nav-scroller py-1 mb-3 border-bottom">
@@ -319,7 +327,8 @@
                     <h2>Inline HTML elements</h2>
                     <p>HTML defines a long list of available inline tags, a complete list of which can be found on the
                         <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer
-                            Network</a>.</p>
+                            Network</a>.
+                    </p>
                     <ul>
                         <li><strong>To bold text</strong>, use <code
                                 class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
