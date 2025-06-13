@@ -20,9 +20,11 @@ const registerController = require('./controllers/registerController')
 const storeUserController = require('./controllers/storeUserController')
 const loginUserController = require('./controllers/loginUserController')
 const logoutController = require('./controllers/logoutController')
+const homeController = require('./controllers/homeController')
 
 //Middleware
 const redirectIfAuth = require('./middleware/redirectIfAuth')
+const authMiddleware = require('./middleware/authMiddleware')
 
 app.use(express.static('public'))
 app.use(express.json())
@@ -38,6 +40,7 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs')
 
 app.get('/', indexController)
+app.get('/home', authMiddleware, homeController)
 app.get('/login', redirectIfAuth, loginController)
 app.get('/register', redirectIfAuth, registerController)
 app.post('/user/register', redirectIfAuth, storeUserController)
